@@ -33,7 +33,8 @@ export async function generateMetadata({ params }) {
       url: `/service/${params.id}`,
       images: [
         {
-          url: service.image || "http://localhost:3000",
+          url:
+            service.image || "https://family-care-service-platform.vercel.app",
           width: 1200,
           height: 630,
         },

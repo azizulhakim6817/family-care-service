@@ -6,7 +6,7 @@ import Contact from "@/components/home/contact/Contact";
 
 // ✅ SEO Optimized Metadata
 export const metadata = {
-  title: "Family-care Home",
+  title: "Baby Sitting & Elderly Care Service Platform",
   description:
     "Find and book trusted Family-care home services like baby care, elderly care, and cleaning. Fast, reliable, and affordable.",
 

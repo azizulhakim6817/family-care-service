@@ -20,7 +20,7 @@ export const metadata = {
   metadataBase: new URL("https://yourdomain.com"),
 
   title: {
-    default: "Family-care Home Service",
+    default: "Baby Sitting & Elderly Care Service Platform",
     template: "%s | Family-care",
   },
 
@@ -36,7 +36,7 @@ export const metadata = {
   ],
 
   authors: [{ name: "Family-care" }],
-  creator: "Family-care",
+  creator: "family-care-service-platform",
 
   robots: {
     index: true,
@@ -44,17 +44,17 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "Family-care Home Service Platform",
+    title: "family-care-service-platform",
     description:
       "Book trusted home services like baby care and elderly care easily.",
     url: "https://yourdomain.com",
-    siteName: "Family-care",
+    siteName: "family-care-service-platform",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Family-care Home Service",
+        alt: "Baby Sitting & Elderly Care Service Platform",
       },
     ],
     locale: "en_US",
@@ -63,7 +63,7 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Family-care Home Service",
+    title: "Baby Sitting & Elderly Care Service Platform",
     description: "Book trusted home services easily.",
     images: ["/og-image.jpg"],
   },

@@ -115,7 +115,7 @@ Create a .env.local file:
 
 MONGODB_URI=your_mongodb_connection
 NEXTAUTH_SECRET=your_secret_key
-NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_URL=https://family-care-service-platform.vercel.app
 
 EMAIL_USER=your_email
 EMAIL_PASS=your_email_password
