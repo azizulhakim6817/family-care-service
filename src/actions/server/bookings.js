@@ -12,6 +12,9 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 //! getBooking --------------------
 export const getBooking = async () => {
+  const { user } = await getServerSession(authOptions);
+  if (!user) return { success: false };
+
   const collections = await dbConnect(collection.BOOKING);
   const result = await collections.find().sort({ createdAt: -1 }).toArray();
 
@@ -25,6 +28,9 @@ export const getBooking = async () => {
 
 //! single booking -------------
 export const singleBooking = async (id) => {
+  const { user } = await getServerSession(authOptions);
+  if (!user) return { success: false };
+
   const collections = await dbConnect(collection.BOOKING);
   const result = await collections.findOne({
     _id: new ObjectId(id),
@@ -35,6 +41,9 @@ export const singleBooking = async (id) => {
 
 //! delete booking -------------
 export const cancelBooking = async (id) => {
+  const { user } = await getServerSession(authOptions);
+  if (!user) return { success: false };
+
   const collections = await dbConnect(collection.BOOKING);
   const result = await collections.deleteOne({
     _id: new ObjectId(id),
@@ -95,7 +104,7 @@ export const createCheckoutSession = async (paymentInfo) => {
       customer_email: paymentInfo?.email,
 
       metadata: {
-        bookingId: paymentInfo?.bookingId, // ✅ IMPORTANT
+        bookingId: paymentInfo?.bookingId,
       },
 
       success_url: `${process.env.NEXTAUTH_URL}/dashboard/payment-success?session_id={CHECKOUT_SESSION_ID}`,

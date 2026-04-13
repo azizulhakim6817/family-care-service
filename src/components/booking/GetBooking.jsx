@@ -83,55 +83,55 @@ const GetBooking = ({ bookings: initialBookings }) => {
               {/* Body */}
               <tbody>
                 {bookings.map((booking, index) => (
-                  <tr key={booking._id} className="hover">
+                  <tr key={booking?._id} className="hover">
                     <td>{index + 1}</td>
 
-                    <td className="font-semibold">{booking.serviceName}</td>
+                    <td className="font-semibold">{booking?.serviceName}</td>
 
-                    <td>{booking.type}</td>
+                    <td>{booking?.type}</td>
 
-                    <td>{booking.duration} hr</td>
+                    <td>{booking?.duration} hr</td>
 
                     <td className="text-sm">
-                      {booking.district}, {booking.division}
+                      {booking?.district}, {booking?.division}
                     </td>
 
-                    <td className="font-semibold">${booking.totalCost}</td>
+                    <td className="font-semibold">${booking?.totalCost}</td>
 
                     {/* Status */}
                     <td>
                       <span
                         className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                          statusStyles[booking.status] ||
+                          statusStyles[booking?.status] ||
                           "bg-gray-100 text-gray-600"
                         }`}
                       >
-                        {booking.status}
+                        {booking?.status}
                       </span>
                     </td>
 
                     {/* User */}
                     <td>
                       <div>
-                        <p className="font-medium">{booking.name}</p>
-                        <p className="text-xs opacity-70">{booking.email}</p>
+                        <p className="font-medium">{booking?.name}</p>
+                        <p className="text-xs opacity-70">{booking?.email}</p>
                       </div>
                     </td>
 
-                    <td>{new Date(booking.createdAt).toLocaleDateString()}</td>
+                    <td>{new Date(booking?.createdAt).toLocaleDateString()}</td>
 
                     {/* Actions */}
                     <td className="flex gap-2">
                       <Link
-                        href={`/my-booking/${booking._id}`}
+                        href={`/my-booking/${booking?._id}`}
                         className="btn btn-xs btn-primary"
                       >
                         View
                       </Link>
 
                       <button
-                        disabled={booking.status === "Cancelled"}
-                        onClick={() => handleCancelBooking(booking._id)}
+                        disabled={booking?.status === "Cancelled"}
+                        onClick={() => handleCancelBooking(booking?._id)}
                         className="btn btn-xs btn-error disabled:opacity-50"
                       >
                         Cancel

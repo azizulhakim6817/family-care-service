@@ -5,6 +5,9 @@ import { getServerSession } from "next-auth";
 
 // getServices------------
 export const getServices = async () => {
+   const { user } = await getServerSession(authOptions);
+  if (!user) return { success: false };
+  
   const collections = await dbConnect(collection.SERVICE);
   const result = await collections.find().toArray();
 
@@ -19,8 +22,8 @@ export const getServices = async () => {
 // singleService-----------------
 export const singleService = async (id) => {
   const { user } = await getServerSession(authOptions);
-
   if (!user) return { success: false };
+
   const collections = await dbConnect(collection.SERVICE);
 
   const result = await collections.findOne({ _id: new ObjectId(id) });
