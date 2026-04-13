@@ -3,13 +3,17 @@
 Care.xyz is a modern web application that connects users with trusted caregivers for babies, elderly people, and patients.
 Users can easily book care services online, track bookings, and receive secure and reliable caregiving support.
 
-🌐 Live Demo
+🌐 Live Websive  Link : 
 
-👉 https://your-live-link.com
+   👉 https://family-care-service-platform.vercel.app
 
 📁 GitHub Repository
 
-👉 https://github.com/your-username/care.xyz
+    👉 https://github.com/azizulhakim6817/family-care-service
+
+🌐 Admin
+    👉 Email : programmerazizulhakim@gmail.com 
+    👉 Password : Aziz68
 
 🚀 Project Overview
 
