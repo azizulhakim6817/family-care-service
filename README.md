@@ -1,19 +1,19 @@
+🌐 Live Websive Link : <br>
+
+👉 https://family-care-service-platform.vercel.app
+
+📁 GitHub Repository <br>
+
+    👉 https://github.com/azizulhakim6817/family-care-service
+
+🌐 Admin <br>
+👉 Email : programmerazizulhakim@gmail.com <br>
+👉 Password : Aziz68
+
 📌 Care.xyz – Baby Sitting & Elderly Care Service Platform
 
 Care.xyz is a modern web application that connects users with trusted caregivers for babies, elderly people, and patients.
 Users can easily book care services online, track bookings, and receive secure and reliable caregiving support.
-
-🌐 Live Websive  Link : 
-
-   👉 https://family-care-service-platform.vercel.app
-
-📁 GitHub Repository
-
-    👉 https://github.com/azizulhakim6817/family-care-service
-
-🌐 Admin
-    👉 Email : programmerazizulhakim@gmail.com 
-    👉 Password : Aziz68
 
 🚀 Project Overview
 
