@@ -13,7 +13,6 @@ export async function proxy(req) {
   const { pathname } = req.nextUrl;
 
   const isAdminRoute = adminRoutes.some((route) => pathname.startsWith(route));
-
   const isPrivateRoute = privateRoutes.some((route) =>
     pathname.startsWith(route),
   );
@@ -29,7 +28,7 @@ export async function proxy(req) {
   //! Not admin but trying to access dashboard
   if (isAdminRoute && token?.role !== "admin") {
     const url = req.nextUrl.clone();
-    url.pathname = "/403"; // forbidden page
+    url.pathname = "/403";
     return NextResponse.redirect(url);
   }
 
@@ -37,5 +36,10 @@ export async function proxy(req) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/service/:path*", "/my-booking/:path*", "/profile/:path*"],
+  matcher: [
+    "/dashboard/:path*",
+    "/service/:path*",
+    "/my-booking/:path*",
+    "/profile/:path*",
+  ],
 };

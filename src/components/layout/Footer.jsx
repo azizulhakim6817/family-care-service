@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
@@ -5,18 +6,14 @@ const Footer = () => {
     <div>
       <footer className="footer sm:footer-horizontal bg-base-300 dark:bg-black/60 p-10">
         <nav>
-          <h6 className="footer-title">Services</h6>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Design</a>
-          <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>
+          <h6 className="footer-title">Family Care</h6>
+          <Link href="/service" className="link link-hover">Service</Link>
+          <Link href="/my-booking" className="link link-hover">My Bookings</Link>
         </nav>
         <nav>
-          <h6 className="footer-title">Company</h6>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
+          <h6 className="footer-title">Hospital Inoformations</h6>
+          <Link href="/about" className="link link-hover">About</Link>
+          <Link href="/contact" className="link link-hover">Contact</Link>
         </nav>
         <nav>
           <h6 className="footer-title">Social</h6>

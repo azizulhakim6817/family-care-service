@@ -16,7 +16,7 @@ import "swiper/css/effect-fade";
 
 const BannerSwiper = ({ slides }) => {
   return (
-    <div className="w-full mx-auto mb-8">
+    <div className="w-full mx-auto mb-4">
       <Swiper
         modules={[Pagination, A11y, Autoplay, Navigation, EffectFade]}
         pagination={{ clickable: true }}
@@ -30,15 +30,7 @@ const BannerSwiper = ({ slides }) => {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div className="relative w-full h-62.5 md:h-100">
-              {/* <Image
-                src={slide.image}
-                alt={slide.title}
-                width={400}
-                height={300}
-                className="object-cover mx-auto"
-                unoptimized
-              /> */}
-
+              
               {/* Overlay */}
               <div
                 className="absolute inset-0 bg-cover bg-center   flex items-center text-center"

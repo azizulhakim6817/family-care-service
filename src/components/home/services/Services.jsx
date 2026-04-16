@@ -8,13 +8,13 @@ const Services = async () => {
   return (
     <section className="py-16 md:px-6  rounded-xl">
       {/* Title */}
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
         Our Services
       </h2>
 
       {/* Grid */}
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4  rounded-xl">
-        {categories.map((cat) => (
+        {categories?.map((cat) => (
           <div
             key={cat?._id}
             className=" rounded-xl shadow hover:shadow-xl transition duration-300 overflow-hidden group"

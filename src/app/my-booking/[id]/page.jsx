@@ -22,7 +22,11 @@ const SingleBookingPage = async ({ params }) => {
           </h1>
           <span
             className={`px-3 py-1 rounded-full font-semibold text-sm 
-            ${booking?.status === "Confirmed" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}
+            ${
+              booking?.booking_status === "Confirmed"
+                ? "bg-green-100 text-green-800"
+                : "bg-red-100 text-red-800"
+            }`}
           >
             {booking?.status}
           </span>

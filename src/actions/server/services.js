@@ -1,13 +1,12 @@
-import { authOptions } from "@/lib/authOptions ";
+"use server";
+
+import { authOptions } from "@/lib/authOptions";
 import { collection, dbConnect } from "@/lib/dbConnect";
 import { ObjectId } from "mongodb";
 import { getServerSession } from "next-auth";
 
 // getServices------------
 export const getServices = async () => {
-   const { user } = await getServerSession(authOptions);
-  if (!user) return { success: false };
-  
   const collections = await dbConnect(collection.SERVICE);
   const result = await collections.find().toArray();
 
@@ -21,8 +20,10 @@ export const getServices = async () => {
 
 // singleService-----------------
 export const singleService = async (id) => {
-  const { user } = await getServerSession(authOptions);
-  if (!user) return { success: false };
+  //* correct session handling
+  const session = await getServerSession(authOptions);
+  const user = session?.user;
+  if (!user?.email) return [];
 
   const collections = await dbConnect(collection.SERVICE);
 

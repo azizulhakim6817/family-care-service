@@ -50,14 +50,14 @@ const Navbotton = () => {
           {/* Dropdown */}
           <ul
             tabIndex={0}
-            className="mt-3 z-50 p-2 shadow-lg menu menu-sm dropdown-content bg-base-100 rounded-box w-56"
+            className="bg-white dark:bg-black mt-3 z-50 p-2 shadow-lg menu menu-sm dropdown-content rounded-box w-56"
           >
             {/* admin */}
             {isAdmin && (
               <li>
                 <Link
                   href="/dashboard/paymentHistory"
-                  className="flex items-center gap-2 text-[16px]"
+                  className="flex items-center gap-2 text-[16px] hover:bg-white hover:text-black"
                 >
                   <MdOutlineDashboardCustomize size={18} />
                   Dashboard
@@ -67,7 +67,10 @@ const Navbotton = () => {
 
             {/* PROFILE */}
             <li>
-              <Link href="/profile" className="flex items-center gap-2 text-[16px]">
+              <Link
+                href="/profile"
+                className="flex items-center gap-2 text-[16px] hover:bg-white hover:text-black"
+              >
                 <FaUserPlus size={18} />
                 Profile
               </Link>

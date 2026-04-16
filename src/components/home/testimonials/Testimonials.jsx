@@ -58,7 +58,7 @@ const Testimonials = () => {
           {stats.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white p-6 rounded-xl text-center shadow-sm "
+              className="bg-white dark:bg-gray-800 p-6 rounded-xl text-center shadow-sm "
             >
               <h3 className="text-2xl font-bold text-primary">{item.number}</h3>
               <p className="text-sm text-gray-500">{item.label}</p>

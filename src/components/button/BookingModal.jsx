@@ -66,7 +66,7 @@ const BookingModal = ({ service }) => {
     (d) => d.division_id === selectedDivision,
   );
 
-  // ✅ Submit Booking
+  //! Submit Booking
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -130,7 +130,7 @@ const BookingModal = ({ service }) => {
       {/* Modal */}
       <dialog
         ref={bookRef}
-        className="mx-auto mt-20 rounded-xl p-0 backdrop:bg-black/50"
+        className="mx-auto mt-20 rounded-xl p-0 dark:bg-black dark:text-white"
       >
         <div className="p-6 rounded-xl md:w-96">
           <h3 className="text-center text-[14px] md:text-xl font-medium mb-4">
@@ -143,7 +143,7 @@ const BookingModal = ({ service }) => {
             <select
               value={type}
               onChange={(e) => setType(e.target.value)}
-              className="select w-full"
+              className="select w-full dark:bg-black dark:text-white"
               required
             >
               <option value="">Select Hour / Day</option>
@@ -163,7 +163,7 @@ const BookingModal = ({ service }) => {
                   value={duration}
                   onChange={(e) => setDuration(Number(e.target.value))}
                   placeholder={type === "hourly" ? "Enter hours" : "Enter days"}
-                  className="input input-bordered w-full"
+                  className="input input-bordered w-full dark:bg-black dark:text-white"
                   required
                 />
               </>
@@ -174,7 +174,7 @@ const BookingModal = ({ service }) => {
             <select
               value={selectedDivision}
               onChange={(e) => setSelectedDivision(e.target.value)}
-              className="select w-full"
+              className="select w-full dark:bg-black dark:text-white"
               required
             >
               <option value="">Select Division</option>
@@ -188,7 +188,7 @@ const BookingModal = ({ service }) => {
 
             {/* District */}
             <label className="text-sm font-medium">District</label>
-            <select name="district" className="select w-full" required>
+            <select name="district" className="select w-full dark:bg-black dark:text-white" required>
               <option value="">Select District</option>
 
               {filteredDistricts.map((d) => (
@@ -203,7 +203,7 @@ const BookingModal = ({ service }) => {
             <textarea
               name="address"
               placeholder="Enter full address"
-              className="textarea textarea-bordered w-full"
+              className="textarea textarea-bordered w-full dark:bg-black dark:text-white"
               required
             />
 
@@ -217,7 +217,7 @@ const BookingModal = ({ service }) => {
               <button
                 type="button"
                 onClick={handleClose}
-                className="btn w-1/2 bg-gray-300 text-black"
+                className="btn w-1/2 bg-gray-300 text-black dark:bg-black dark:text-white"
               >
                 Cancel
               </button>

@@ -101,11 +101,11 @@ const ServiceDetails = async ({ params }) => {
           </p>
           <p>
             <span className="font-medium text-sm">Hourly Price :</span> $
-            {pricing.hourly}
+            {pricing?.hourly}
           </p>
           <p>
             <span className="font-medium text-sm">Daily Price : :</span> $
-            {pricing.daily}
+            {pricing?.daily}
           </p>
 
           {/* Combined Care Info */}

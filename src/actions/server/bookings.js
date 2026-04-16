@@ -1,6 +1,6 @@
 "use server";
 
-import { authOptions } from "@/lib/authOptions ";
+import { authOptions } from "@/lib/authOptions";
 import { collection, dbConnect } from "@/lib/dbConnect";
 import { invoiceTemplate } from "@/lib/invoiceTemplate";
 import { sendEmail } from "@/lib/mailer";
@@ -12,59 +12,163 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 //! getBooking --------------------
 export const getBooking = async () => {
-  const { user } = await getServerSession(authOptions);
-  if (!user) return { success: false };
+  try {
+    //* correct session handling
+    const session = await getServerSession(authOptions);
+    const user = session?.user;
+    if (!user?.email) return [];
 
-  const collections = await dbConnect(collection.BOOKING);
-  const result = await collections.find().sort({ createdAt: -1 }).toArray();
+    const collections = await dbConnect(collection.BOOKING);
 
-  const data = result.map((items) => ({
-    ...items,
-    id: items._id.toString(),
-  }));
+    //* filter by logged-in user email
+    const result = await collections
+      .find({ email: user.email })
+      .sort({ createdAt: -1 })
+      .toArray();
 
-  return data;
+    //* fix _id--------------
+    const data = result.map((item) => ({
+      ...item,
+      _id: item._id.toString(),
+    }));
+
+    return data;
+  } catch (error) {
+    console.error("Get Booking Error:", error);
+    return [];
+  }
+};
+
+//! getBooking-All Admin --------------------
+export const getBookingAllAdmin = async () => {
+  try {
+    const session = await getServerSession(authOptions);
+    const user = session?.user;
+    if (!user || user.role !== "admin") return [];
+
+    const collections = await dbConnect(collection.BOOKING);
+
+    //* Admin gets all bookings
+    const result = await collections.find({}).sort({ createdAt: -1 }).toArray();
+
+    return result.map((item) => ({
+      ...item,
+      _id: item._id.toString(),
+    }));
+  } catch (error) {
+    console.error("Get Booking Error:", error);
+    return [];
+  }
 };
 
 //! single booking -------------
 export const singleBooking = async (id) => {
-  const { user } = await getServerSession(authOptions);
-  if (!user) return { success: false };
+  const session = await getServerSession(authOptions);
+  const user = session?.user;
+
+  if (!user?.email) return null;
 
   const collections = await dbConnect(collection.BOOKING);
-  const result = await collections.findOne({
+
+  return await collections.findOne({
     _id: new ObjectId(id),
+    email: user.email,
   });
+};
+
+//! cancel Booking -------------
+export const cancelBooking = async (id) => {
+  try {
+    const session = await getServerSession(authOptions);
+    const user = session?.user;
+
+    if (!user?.email) return { success: false };
+
+    const collections = await dbConnect(collection.BOOKING);
+    const result = await collections.updateOne(
+      {
+        _id: new ObjectId(id),
+        email: user.email,
+      },
+      {
+        $set: {
+          booking_status: "Cancelled",
+        },
+      },
+    );
+
+    return { modifiedCount: result.modifiedCount };
+  } catch (error) {
+    console.error("Cancel Booking Error:", error);
+    return { success: false };
+  }
+};
+
+//! confirmed booking-----------------------
+export const confirmBooking = async (id) => {
+  const collections = await dbConnect(collection.BOOKING);
+
+  const result = await collections.updateOne(
+    { _id: new ObjectId(id) },
+    {
+      $set: {
+        booking_status: "Confirmed",
+      },
+    },
+  );
 
   return result;
 };
 
-//! delete booking -------------
-export const cancelBooking = async (id) => {
-  const { user } = await getServerSession(authOptions);
-  if (!user) return { success: false };
-
+//! complated booking---------------
+export const completedBooking = async (id) => {
   const collections = await dbConnect(collection.BOOKING);
-  const result = await collections.deleteOne({
-    _id: new ObjectId(id),
-  });
+
+  const bookingId = { _id: new ObjectId(id) };
+
+  const update = {
+    $set: { booking_status: "Completed" },
+  };
+
+  const result = await collections.updateOne(bookingId, update);
 
   return result;
+};
+//! delete Booking--------------------------------
+export const deleteBooking = async (id) => {
+  try {
+    const session = await getServerSession(authOptions);
+    const user = session?.user;
+
+    if (!user?.email) return { success: false };
+
+    const collections = await dbConnect(collection.BOOKING);
+    const result = await collections.deleteOne({
+      _id: new ObjectId(id),
+      email: user.email,
+    });
+
+    return { deletedCount: result.deletedCount };
+  } catch (error) {
+    console.error("Delete Booking Error:", error);
+    return { success: false };
+  }
 };
 
 //! create-checkout-session-------------------------
 //! payment related apis-----------------------------------------
 //! new payment post--------------------------
-// ================= CREATE BOOKING =================
+//! CREATE BOOKING =================
 export const createBooking = async (payload) => {
   const session = await getServerSession(authOptions);
-
   try {
     const collections = await dbConnect(collection.BOOKING);
+
     const bookingData = {
       ...payload,
       status: "Pending",
       isPaid: false,
+      booking_status: "Pending",
       name: session?.user?.name,
       email: session?.user?.email,
       createdAt: new Date().toISOString(),
@@ -107,8 +211,8 @@ export const createCheckoutSession = async (paymentInfo) => {
         bookingId: paymentInfo?.bookingId,
       },
 
-      success_url: `${process.env.NEXTAUTH_URL}/dashboard/payment-success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXTAUTH_URL}/dashboard/payment-cancel`,
+      success_url: `${process.env.NEXTAUTH_URL}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXTAUTH_URL}/payment-cancel`,
     });
 
     return session.url;
