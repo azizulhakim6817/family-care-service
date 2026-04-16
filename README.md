@@ -1,10 +1,8 @@
 🌐 Live Websive Link : <br>
-
 👉 https://family-care-service-platform.vercel.app
 
 📁 GitHub Repository <br>
-
-    👉 https://github.com/azizulhakim6817/family-care-service
+👉 https://github.com/azizulhakim6817/family-care-service
 
 🌐 Admin <br>
 👉 Email : programmerazizulhakim@gmail.com <br>
