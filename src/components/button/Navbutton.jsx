@@ -24,11 +24,11 @@ const Navbotton = () => {
       {/* NOT AUTH */}
       {status !== "authenticated" ? (
         <div className="flex gap-2">
-          <Link href="/login" className="btn btn-accent btn-sm text-white">
+          <Link href="/login" className="btn bg-blue-600 btn-sm text-white">
             Login
           </Link>
 
-          <Link href="/register" className="btn btn-accent btn-sm text-white">
+          <Link href="/register" className="btn bg-blue-600 btn-sm text-white">
             Register
           </Link>
         </div>
@@ -57,7 +57,7 @@ const Navbotton = () => {
               <li>
                 <Link
                   href="/dashboard/paymentHistory"
-                  className="flex items-center gap-2 text-[16px] hover:bg-white hover:text-black"
+                  className="flex items-center gap-2 text-[16px] dark:hover:bg-white hover:text-black"
                 >
                   <MdOutlineDashboardCustomize size={18} />
                   Dashboard
@@ -69,7 +69,7 @@ const Navbotton = () => {
             <li>
               <Link
                 href="/profile"
-                className="flex items-center gap-2 text-[16px] hover:bg-white hover:text-black"
+                className="flex items-center gap-2 text-[16px] dark:hover:bg-white hover:text-black"
               >
                 <FaUserPlus size={18} />
                 Profile
@@ -82,7 +82,7 @@ const Navbotton = () => {
             <li>
               <button
                 onClick={() => signOut()}
-                className="flex items-center gap-2 text-red-500 hover:bg-red-50"
+                className="flex items-center gap-2 text-[16px] ml-2 text-red-500 hover:bg-red-50"
               >
                 <FiLogOut size={18} />
                 Logout

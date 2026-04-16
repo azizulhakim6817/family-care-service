@@ -81,7 +81,7 @@ const LoginForm = () => {
               {/* Login---------------------*/}
               <button
                 type="submit"
-                className="btn bg-accent text-white font-normal mt-4 hover:bg-secondary  hover:outline-1 outline-accent"
+                className="btn bg-blue-600 text-white font-normal mt-4 hover:bg-secondary  hover:outline-1 outline-accent"
               >
                 Login
               </button>
@@ -97,7 +97,7 @@ const LoginForm = () => {
               Please register at Family Care :
               <Link
                 href={`/register?callbackUrl=${callBack.slice(1)}`}
-                className="text-blue-500 hover:text-blue-800 underline"
+                className="text-blue-400 underline hover:text-blue-900"
               >
                 <span> Register</span>
               </Link>

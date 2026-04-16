@@ -154,7 +154,7 @@ const RegisterForm = () => {
 
             <button
               type="submit"
-              className="btn bg-accent text-white font-normal mt-4 w-full"
+              className="btn bg-blue-600 text-white font-normal mt-4 w-full"
             >
               Register
             </button>
@@ -165,7 +165,7 @@ const RegisterForm = () => {
           Already registered?{" "}
           <Link
             href="/login"
-            className="text-blue-500 underline hover:text-blue-800"
+            className="text-blue-400 underline hover:text-blue-900"
           >
             Login
           </Link>

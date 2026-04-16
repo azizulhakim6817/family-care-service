@@ -239,7 +239,7 @@ const Page = () => {
                           </span>
                         </td>
                         <td className="px-3 py-1">
-                          {booking?.booking_status !== "Pending" ? (
+                          {booking?.status !== "Pending" ? (
                             <div className="flex gap-2 justify-center items-center">
                               <Link
                                 href={`/my-booking/${booking?._id}`}
