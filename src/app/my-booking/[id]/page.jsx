@@ -13,8 +13,8 @@ const SingleBookingPage = async ({ params }) => {
   const booking = await singleBooking(id);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 flex justify-center">
-      <div className="max-w-3xl w-full bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-8 space-y-6">
+    <div className="min-h-screen  my-6 py-4 md:p-8  flex justify-center">
+      <div className="max-w-3xl w-full dark:bg-gray-900  shadow-xl rounded-2xl p-2 py-4 md:p-8 space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 pb-4">
           <h1 className="text-3xl font-bold text-gray-800 dark:text-white">
@@ -42,7 +42,7 @@ const SingleBookingPage = async ({ params }) => {
                 User
               </h2>
               <p className="text-lg font-semibold">{booking.name}</p>
-              <p className="text-gray-500 dark:text-gray-400">
+              <p className="text-[14px] md:text-[16px] text-gray-500 dark:text-gray-400">
                 {booking.email}
               </p>
             </div>

@@ -58,7 +58,7 @@ const Navbar = () => {
             </svg>
           </button>
           <ul
-            className={`menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow transition-transform duration-300 ${
+            className={`menu menu-sm dropdown-content bg-white dark:bg-black rounded-box z-50 mt-3 w-52 p-2 shadow transition-transform duration-300 ${
               dropdownOpen ? "scale-100" : "scale-0"
             } origin-top`}
           >

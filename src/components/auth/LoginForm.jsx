@@ -62,7 +62,7 @@ const LoginForm = () => {
                 name="email"
                 value={form.email}
                 onChange={handleChange}
-                className="input  dark:bg-black"
+                className="input  dark:bg-black dark:outline"
                 placeholder="Email "
               />
               <label className="label">Password</label>
@@ -71,7 +71,7 @@ const LoginForm = () => {
                 name="password"
                 value={form.password}
                 onChange={handleChange}
-                className="input"
+                className="input dark:bg-black dark:outline"
                 placeholder="Password"
               />
               <div>
@@ -81,7 +81,7 @@ const LoginForm = () => {
               {/* Login---------------------*/}
               <button
                 type="submit"
-                className="btn bg-blue-600 text-white font-normal mt-4 hover:bg-secondary  hover:outline-1 outline-accent"
+                className="btn bg-blue-600 text-white font-normal mt-4 outline-accent hover:bg-blue-900"
               >
                 Login
               </button>

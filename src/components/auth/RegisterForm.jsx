@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import SocialButton from "../button/SocialButton";
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -83,7 +84,7 @@ const RegisterForm = () => {
               name="name"
               value={form.name}
               onChange={handleChange}
-              className="input dark:text-black"
+              className="input dark:bg-black/40 dark:outline"
               placeholder="Name"
               required
             />
@@ -94,44 +95,52 @@ const RegisterForm = () => {
               name="nidno"
               value={form.nidno}
               onChange={handleChange}
-              className="input dark:text-black"
+              className="input  dark:bg-black/40 dark:outline"
               placeholder="NID No"
               required
             />
 
             {/* Email */}
-            <label className="label">Email</label>
+            <label htmlFor="email" className="label">
+              Email
+            </label>
+
             <input
+              id="email"
               type="email"
               name="email"
               value={form.email}
               onChange={handleChange}
-              className="input dark:text-black"
+              className="input dark:bg-black dark:outline"
               placeholder="Email"
               required
               autoComplete="email"
             />
 
             {/* Password */}
-            <label className="label">Password</label>
+            <label htmlFor="password" className="label">
+              Password
+            </label>
+
             <input
+              id="password"
               type="password"
               name="password"
               value={form.password}
               onChange={handleChange}
-              className="input dark:text-white dark:bg-black"
+              className="input dark:bg-black/40 dark:outline"
               placeholder="Password"
               required
               autoComplete="current-password"
             />
-            {/* Password */}
+            {/* Contract */}
             <label className="label">Contract</label>
             <input
               type="tel"
               name="contact"
               value={form.contact}
               onChange={handleChange}
-              className="input dark:text-white dark:bg-black"
+              className="input dark:bg-black/40 dark:outline"
               placeholder="Contract"
               required
               autoComplete="current-tel"
@@ -144,7 +153,7 @@ const RegisterForm = () => {
               name="image"
               value={form.image}
               onChange={handleChange}
-              className="input dark:text-black"
+              className="input  dark:bg-black/40 dark:outline"
               placeholder="Image URL"
             />
 
@@ -160,7 +169,9 @@ const RegisterForm = () => {
             </button>
           </fieldset>
         </form>
-
+        <div>
+          <SocialButton></SocialButton>
+        </div>
         <p className="text-center mt-4">
           Already registered?{" "}
           <Link
